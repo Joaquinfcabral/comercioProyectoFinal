@@ -2,10 +2,9 @@ import React from "react";
 
 
 const ItemDetail = ({ item }) => {
-   /* return (
+    return (
         <>
-            
-                <div className="card mb-3" style="max-width: 540px;">
+                <div className="card mb-3" style={{maxWidth: '540px'}}>
                     <div className="row g-0">
                         <div className="col-md-4">
                             <img src={item.imagen} className="img-fluid rounded-start" alt={item.name}/>
@@ -20,7 +19,7 @@ const ItemDetail = ({ item }) => {
                 </div>
             
         </>
-    )*/
+    )
 }
 
 export default ItemDetail

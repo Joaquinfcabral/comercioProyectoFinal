@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { getProductos } from '../../mocks/ApiNba'
 
@@ -7,17 +8,17 @@ import { getProductos } from '../../mocks/ApiNba'
 const ItemDetailContainer = () => {
 
     const [unProducto, setUnProducto] = useState([])
+    const {id} = useParams();
 
     useEffect(() => {
+       
         getProductos
-            .then((res) => setUnProducto(res))
-            .catch((error) => console.log(error))
-
-    }, [])
-
-
-
-   return (
+        
+        .then(data => setUnProducto(data.find(item => item.id === parseInt(id))))
+        .catch(err => console.log(err))
+    }, []) 
+    
+    return (
         <>
             <ItemDetail item={unProducto} />
         </>
