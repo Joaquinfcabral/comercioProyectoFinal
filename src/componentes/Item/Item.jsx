@@ -12,8 +12,7 @@ const Item = ({producto}) =>{
                 <p className='card-text'>{name}</p>
                 <p className='card-text'><Link to={`/item/${id}`}>{description}</Link></p>
             </div>
-            <ItemCount stock={stock} />
-
+            {/* <ItemCount stock={stock} /> */}
         </div>
     )
 }

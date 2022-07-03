@@ -1,7 +1,22 @@
 import React from "react";
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { useContext } from "react";
+import { CartContext } from '../CartContext/CartContext'
+import { Link } from 'react-router-dom';
+import ItemCount from '../ItemCount/ItemCount';
 
-
+                                          
 const ItemDetail = ({ item }) => {
+    const [itemCount, setItemCount] = useState(0)
+    const prueba = useContext(CartContext)
+
+    const onAdd = (qty) => {
+        alert("You have selected " + qty + " items.");
+        setItemCount(qty);
+        prueba.addToCart(item);
+    }
+
     return (
         <>
                 <div className="card mb-3" style={{maxWidth: '540px'}}>
@@ -17,6 +32,11 @@ const ItemDetail = ({ item }) => {
                         </div>
                     </div>
                 </div>
+                {
+                        itemCount === 0
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
+                        : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">CheckOut</Button></Link>
+                    }
             
         </>
     )
